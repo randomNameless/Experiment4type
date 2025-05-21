@@ -4,25 +4,29 @@
   <meta charset="UTF-8">
   <title>Runtime Unpacking Simulation</title>
   <script>
-    // Packed payload using a fake obfuscation scheme (ROT13 variant)
+    // Fake obfuscated payload using ROT13
     const packedCode = "nynpr('Unzvygba rkvfgf!');";
 
-    // Runtime "unpacker" function (ROT13 decoder)
+    // ROT13 unpacker
     function unpack(code) {
       return code.replace(/[a-zA-Z]/g, function (c) {
-        return String.fromCharCode(
-          (c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
-        );
+        const base = c <= 'Z' ? 65 : 97;
+        return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
       });
     }
 
-    window.onload = function () {
-      // Unpack at runtime
-      const unpacked = unpack(packedCode);  // -> "alert('Hamilton exists!');"
+    // Execute after DOM is ready
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const unpacked = unpack(packedCode);
+        console.log("Unpacked code:", unpacked);
 
-      // Execute the unpacked payload
-      eval(unpacked);
-    };
+        // Execute unpacked payload
+        eval(unpacked);
+      } catch (err) {
+        console.error("Runtime unpacking failed:", err);
+      }
+    });
   </script>
 </head>
 <body>
