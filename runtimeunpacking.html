@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Runtime Unpacking Simulation</title>
+  <script>
+    // Packed payload using a fake obfuscation scheme (ROT13 variant)
+    const packedCode = "nynpr('Unzvygba rkvfgf!');";
+
+    // Runtime "unpacker" function (ROT13 decoder)
+    function unpack(code) {
+      return code.replace(/[a-zA-Z]/g, function (c) {
+        return String.fromCharCode(
+          (c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
+        );
+      });
+    }
+
+    window.onload = function () {
+      // Unpack at runtime
+      const unpacked = unpack(packedCode);  // -> "alert('Hamilton exists!');"
+
+      // Execute unpacked payload
+      const script = document.createElement('script');
+      script.textContent = unpacked;
+      document.body.appendChild(script);
+    };
+  </script>
+</head>
+<body>
+  <h1>Page 3: Runtime Unpacking Simulation</h1>
+</body>
+</html>
+

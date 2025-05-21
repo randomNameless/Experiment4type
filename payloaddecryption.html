@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Embedded Decryption Simulation</title>
+</head>
+<body>
+  <h1>Page 1: Embedded Payload Decryption</h1>
+
+  <!-- Payload embedded directly in the DOM as a data-* attribute -->
+  <div id="payload" data-encoded="Y29uc29sZS5sb2coJ0R5bmFtaWMgcGF5bG9hZCBkZWNyeXB0ZWQhJyk7"></div>
+
+  <script>
+    // Decryption operation embedded and executed at runtime
+    const payloadContainer = document.getElementById('payload');
+    const encoded = payloadContainer.dataset.encoded;
+
+    // Simulate decryption (base64 decode)
+    const decrypted = atob(encoded);
+
+    // Execute the result
+    const script = document.createElement('script');
+    script.textContent = decrypted;
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>
+
