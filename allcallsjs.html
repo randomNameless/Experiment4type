@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Demo: Document and Window APIs</title>
+</head>
+<body>
+  <canvas id="canvas" width="100" height="100"></canvas>
+  <div id="example">Hello</div>
+
+  <script>
+    // Document and DOM APIs
+    document.addEventListener('click', () => console.log('Clicked'));
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+
+    if (document.captureEvents) document.captureEvents(Event.CLICK);
+    document.elementFromPoint(0, 0);
+    document.getRootNode();
+    document.getSelection();
+    document.hasChildNodes();
+    document.hasOwnProperty("title");
+    document.isDefaultNamespace(document.namespaceURI);
+    document.isEqualNode(document);
+    document.isSameNode(document);
+    document.isPrototypeOf(document.body);
+    document.lookupNamespaceURI(null);
+    document.lookupPrefix(document.namespaceURI);
+    document.normalize();
+    document.queryCommandEnabled("copy");
+    document.queryCommandState("copy");
+    document.removeEventListener('click', () => {});
+    if (document.releaseEvents) document.releaseEvents();
+    document.toLocaleString();
+    document.valueOf();
+    document.cloneNode(false);
+    document.contains(document.body);
+
+    // String & Math
+    "example".search("a");
+    "char".charAt(2);
+    Math.log(10);
+    Math.random();
+    "ABC".charCodeAt(1);
+    String.fromCharCode(65);
+    "Hello".concat(" World");
+
+    // Array & String
+    ["a", "b", "c"].indexOf("b");
+    "substring".substring(0, 3);
+    "replace me".replace("me", "you");
+
+    // Write to document (legacy)
+    document.write("<p>Document written</p>");
+    escape("Hello!");
+    unescape("Hello%21");
+
+    // Beacon + cookie
+    navigator.sendBeacon("/log", new Blob(["data"], { type: 'text/plain' }));
+    document.cookie = "test=cookie";
+
+    // Canvas toDataURL
+    const canvas = document.getElementById("canvas");
+    canvas.toDataURL();
+
+    // Base64 decode
+    atob("U2FmZURlY29kZQ==");
+
+    // Mocking custom global functions if needed
+    window.base64ToArrayBuffer = window.base64ToArrayBuffer || function(b64) {
+      return new Uint8Array(atob(b64).split('').map(c => c.charCodeAt(0)));
+    };
+    window.base64ToArrayBuffer("U2FmZURlY29kZQ==");
+
+    // File APIs
+    if (navigator.msSaveOrOpenBlob) {
+      const blob = new Blob(["test"]);
+      navigator.msSaveOrOpenBlob(blob, "file.txt");
+    }
+
+    const blob = new Blob(["test"], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    URL.revokeObjectURL(url);
+
+    // Typed arrays
+    new Uint8Array([1, 2, 3]);
+
+    // Image
+    const img = new Image();
+    img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA";
+    document.body.appendChild(img);
+  </script>
+</body>
+</html>
+

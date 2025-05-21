@@ -1,3 +1,4 @@
-https://randomnameless.github.io/Experiment4type/payloaddecryption.html
-https://randomnameless.github.io/Experiment4type/controlflowredirection.html
-https://randomnameless.github.io/Experiment4type/runtimeunpacking.html
+https://randomnameless.github.io/Experiment4type/payloaddecryptionjs.html
+https://randomnameless.github.io/Experiment4type/runtimeunpackingjs.html
+https://randomnameless.github.io/Experiment4type/payloaddecryptionwasm.html
+https://randomnameless.github.io/Experiment4type/runtimeunpackingwasm.html
