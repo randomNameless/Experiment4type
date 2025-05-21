@@ -4,33 +4,37 @@
   <meta charset="UTF-8">
   <title>Control-Flow Redirection Simulation</title>
   <script>
-    // Simulated control-flow switcher based on obfuscated logic
+    // Simulated obfuscated control flow with observable side effects
     function redirectControlFlow(input) {
       const decision = ((input * 42) % 7) ^ 3;
 
       const controlMap = {
-        0: () => console.log("Branch 0: benign behavior"),
-        1: () => console.log("Branch 1: alternate logic"),
-        2: () => console.log("Branch 2: diagnostic mode"),
+        0: () => console.log("Branch 0 triggered"),
+        1: () => console.log("Branch 1 triggered"),
+        2: () => console.log("Branch 2 triggered"),
         3: () => {
-          // Simulated sensitive branch with observable effect
-          const dynamicCode = "YWxlcnQoJ0NvbnRyb2wtZmxvdyByZWRpcmVjdGVkIHRvIHNlbnNpdGl2ZSBibG9jaycpOw==";
-          eval(atob(dynamicCode)); // Reliable execution
+          // Simulated sensitive logic - observable API call
+          const code = "YWxlcnQoJ1JlZGlyZWN0ZWQgdG8gc2Vuc2l0aXZlIGxvZ2ljJyk7";
+          try {
+            eval(atob(code)); // Will trigger alert() directly
+            console.log("Sensitive branch executed");
+          } catch (e) {
+            console.error("Decryption/execution failed", e);
+          }
         }
       };
 
-      // Redirect to a calculated code path
-      (controlMap[decision] || (() => console.log("Default path")))();
+      (controlMap[decision] || (() => console.log("Default branch executed")))();
     }
 
+    // Ensure it executes early
     window.addEventListener('DOMContentLoaded', () => {
-      // Dynamic but deterministic input for simulation
       redirectControlFlow(13);
     });
   </script>
 </head>
 <body>
-  <h1>Page 2: Simulated Control-Flow Redirection</h1>
+  <h1>Page 2: Control-Flow Redirection Simulation</h1>
 </body>
 </html>
 
