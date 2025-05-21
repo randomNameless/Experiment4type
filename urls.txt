@@ -2,3 +2,5 @@ https://randomnameless.github.io/Experiment4type/payloaddecryptionjs.html
 https://randomnameless.github.io/Experiment4type/runtimeunpackingjs.html
 https://randomnameless.github.io/Experiment4type/payloaddecryptionwasm.html
 https://randomnameless.github.io/Experiment4type/runtimeunpackingwasm.html
+https://randomnameless.github.io/Experiment4type/allcallsjs.html
+https://randomnameless.github.io/Experiment4type/allcallswasm.html
