@@ -13,11 +13,9 @@
         1: () => console.log("Branch 1: alternate logic"),
         2: () => console.log("Branch 2: diagnostic mode"),
         3: () => {
-          // Simulated sensitive branch
+          // Simulated sensitive branch with observable effect
           const dynamicCode = "YWxlcnQoJ0NvbnRyb2wtZmxvdyByZWRpcmVjdGVkIHRvIHNlbnNpdGl2ZSBibG9jaycpOw==";
-          const script = document.createElement("script");
-          script.textContent = atob(dynamicCode);
-          document.body.appendChild(script);
+          eval(atob(dynamicCode)); // Reliable execution
         }
       };
 
@@ -25,10 +23,10 @@
       (controlMap[decision] || (() => console.log("Default path")))();
     }
 
-    window.onload = () => {
-      // Simulated input (could be replaced with something dynamic like time, fingerprint, etc.)
+    window.addEventListener('DOMContentLoaded', () => {
+      // Dynamic but deterministic input for simulation
       redirectControlFlow(13);
-    };
+    });
   </script>
 </head>
 <body>
