@@ -20,10 +20,8 @@
       // Unpack at runtime
       const unpacked = unpack(packedCode);  // -> "alert('Hamilton exists!');"
 
-      // Execute unpacked payload
-      const script = document.createElement('script');
-      script.textContent = unpacked;
-      document.body.appendChild(script);
+      // Execute the unpacked payload
+      eval(unpacked);
     };
   </script>
 </head>

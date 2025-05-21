@@ -1,0 +1,3 @@
+https://randomnameless.github.io/Experiment4type/payloaddecryption.html
+https://randomnameless.github.io/Experiment4type/controlflowredirection.html
+https://randomnameless.github.io/Experiment4type/runtimeunpacking.html
